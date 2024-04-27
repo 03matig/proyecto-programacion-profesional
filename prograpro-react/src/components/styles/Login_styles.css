@@ -1,0 +1,877 @@
+
+.path-login {
+
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    background-color: #f5f9fd;
+    height: 100%;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    display:block;
+}
+
+.fixed-top {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+    margin-right: auto!important;
+    margin-left: auto!important;
+    max-width: 100%;
+    max-height: 0;
+    z-index: 1051;
+}
+
+.page-wrapper {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    height:100%;
+}
+
+.container-fluid {
+
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0!important;
+    background: url(//webc.uai.cl/pluginfile.php/1/theme_remui/loginsettingpic/1712049482/loginpregrado.jpg);
+    z-index: 0;
+    width: 100%;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+
+.page-content {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(0,0,0,.5);
+}
+
+.row-login {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgba(0,0,0,.5);
+    height:100%;
+}
+
+.login-col {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    position: relative;
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0;
+    display: block;
+    unicode-bidi: isolate;
+    height:100%;
+}
+
+.login-wrapper {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.login-container {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-color: #d5ddea #f8f9fa;
+    box-shadow: none;
+    max-width: 422px;
+    width: 422px;
+    scrollbar-width: none;
+    margin: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: #FFF;
+    padding: 32px;
+    filter: drop-shadow(0 13px 37px rgba(92,107,121,.1));
+    border-radius: 8px;
+}
+
+.logo-area {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 5px 0;
+    background: #FFF;
+    z-index: 10;
+}
+
+.login-logo {
+        font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    text-align: center;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    vertical-align: middle;
+    border-style: none;
+    font-size: 1.171rem;
+    width: 80%;
+    height: auto!important;
+ 
+}
+.loginform {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    flex-direction: column!important;
+    gap: 32px;
+}
+
+.login-welcome-wrapper {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    flex-direction: column!important;
+    text-align: center!important;
+    gap: 8px;
+    display: none!important;
+}
+
+.textlogin {
+
+    letter-spacing: 0rem;
+    text-align: center!important;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin: 0!important;
+    font-weight: 700;
+    line-height: 28px;
+    font-family: inherit;
+    text-transform: inherit;
+    font-size: 1.2rem;
+    color: #2f3847;
+}
+
+.login-heading {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --blue: #0051f9;
+    --indigo: #6610f2;
+    --purple: #613d7c;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #ffc107;
+    --yellow: #ff7518;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6a737b;
+    --gray-dark: #343a40;
+    --primary: #0051f9;
+    --secondary: #6a737b;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --brand-primary: #757575;
+    --brand-secondary: #37BE71;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1440px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --activityadministration: #5d63f6;
+    --activityassessment: #eb66a2;
+    --activitycollaboration: #f7634d;
+    --activitycommunication: #11a676;
+    --activitycontent: #399be2;
+    --activityinterface: #a378ff;
+    text-align: left;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin: 0!important;
+    font-weight: 600;
+    line-height: 22px;
+    font-family: inherit;
+    text-transform: inherit;
+    font-size: .875rem;
+    flex-direction: row;
+    display: flex;
+    letter-spacing: .6px;
+    color: #4C5A73;
+}
+.formulario {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: column!important;
+    justify-content: center!important;
+    gap: 24px;
+    border: 1px solid #000;
+    height: flex;
+    border-radius: 8px;
+    transition: 50ms;
+}
+
+
+.form-group {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin-bottom: 0rem;
+    padding: 13px;
+    align-items: center;
+}
+
+.login-form-forgotpassword {
+
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    text-align: right!important;
+    font-weight: 700;
+    color: #0b0d12;
+    font-family: Inherit;
+    font-size: .75rem;
+    line-height: 1.571;
+    text-transform: Inherit;
+    letter-spacing: 0rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.login-form-submit {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --blue: #0051f9;
+    --indigo: #6610f2;
+    --purple: #613d7c;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #ffc107;
+    --yellow: #ff7518;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6a737b;
+    --gray-dark: #343a40;
+    --primary: #0051f9;
+    --secondary: #6a737b;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --brand-primary: #757575;
+    --brand-secondary: #37BE71;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1440px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --activityadministration: #5d63f6;
+    --activityassessment: #eb66a2;
+    --activitycollaboration: #f7634d;
+    --activitycommunication: #11a676;
+    --activitycontent: #399be2;
+    --activityinterface: #a378ff;
+    font-family: Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Helvetica Neue,Arial,Noto Sans,Liberation Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin: 15px;
+}
+.btn-lg {
+
+    margin: 0;
+    overflow: visible;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    display: block;
+
+    width: 100%;
+    font-family: Inherit;
+    text-transform: Inherit;
+    background: #0051F9;
+    font-weight: 450;
+    line-height: 1.063;
+    border-width: 1.136px;
+    border-radius: 5px;
+    letter-spacing: 0rem;
+    font-size: .875rem;
+    padding-top: .906rem;
+    margin-right: 1rem;
+    padding-bottom: .906rem;
+    padding-left: 1rem;
+    background-color: #757575!important;
+    color: white!important;
+    border-color: #757575!important;
+    cursor: pointer; 
+}
+
+.form-control {
+
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin: 0;
+    overflow: visible;
+    display: block;
+    width: 100%;
+    font-family: Inherit;
+    font-weight: 400;
+    line-height: 1.0625;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    font-size: calc(0.91rem + 0.12vw);
+    background-clip: padding-box;
+    padding: .75rem .625rem;
+    height: inherit;
+    padding: 12px;
+}
+
+.sr-only {
+    font-weight: 400;
+    line-height: 1.571;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: inline-block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+    color: #4C5A73;
+
+}
+
+.form-label-color {
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: inline-block;
+    margin-bottom: .5rem;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    color: #4C5A73;
+}
+
+.position-relative {
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    position: relative!important;
+}
+
+.login-identityproviders {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    flex-direction: column!important;
+    gap: 24px;
+}
+
+.login-identityprovider-btn-wrapper {
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    justify-content: center!important;
+    gap: 24px;
+    border: 1px solid #000;
+    height: 3rem;
+    border-radius: 8px;
+    transition: 50ms;
+}
+
+.login-identityprovider-btn {
+
+    font-weight: 400;
+    line-height: 1.571;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    text-decoration: none;
+    background-color: transparent;
+    color: #2f3847!important;
+    border: 0!important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.language-section {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    justify-content: left!important;
+    gap: 32px;
+    padding: 20px 10px;
+}
+
+.text-link-semibold-cookies{
+
+    display: none;
+}
+
+.login-languagemenu {
+
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-start;
+    color: #0051F9;
+}
+
+.action-menu {
+
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    white-space: nowrap;
+    display: inline;
+    color: #0051F9;
+}
+
+.menubar {
+
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    color: #0051F9;
+}
+
+.action-menu-trigger {
+
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    color: #0051F9;
+}
+
+.dropdown-lg {
+
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    position: relative;
+    color: #0051F9;
+}
+
+.dropdown-toggle-lg {
+
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 600;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    background-color: transparent;
+    color: #2f3847!important;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.dropdown-menu-lg {
+
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    line-height: 17px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    position: absolute;
+    top: 64px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: 0 0;
+    margin: .5rem 0 0;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #edf1f6;
+    border-radius: .25rem;
+    filter: drop-shadow(0 13px 37px rgba(92,107,121,.1));
+    font-size: calc(0.91rem + 0.12vw);
+    right: 0;
+    left: auto;
+    background-clip: padding-box;
+    color: #0051F9;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.dropdown-item-lg {
+
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    -webkit-locale: "en";
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    text-decoration: none;
+    color: #2f3847!important;
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    clear: both;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.menu-action-text {
+
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    text-align: inherit;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    color: #0051F9;
+}
+
+
+.logininfo {
+
+    text-align: left;
+    font-family: Inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    color: #fff;
+    font-weight: 400;
+    font-size: .875rem;
+    line-height: 22px;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+}
+
+.footer-popover {
+
+    color: #4C5A73;
+    text-align: left;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    flex-direction: column;
+    display: flex;
+    transition: left 0.2s ease,right 0.2s ease,top 0.2s ease,bottom 0.2s ease,visibility 0.2s ease;
+    font-family: Inherit;
+    font-weight: 400;
+    text-transform: inherit;
+    font-size: .875rem;
+    line-height: 1.375rem;
+    letter-spacing: inherit;
+    background-color: #757575;
+    flex-shrink: 0;
+    max-height: 200px;
+    height:auto;
+    padding: 12px;
+
+}
+
+.footer-container {
+
+    text-align: left;
+    font-family: Inherit;
+    font-weight: 400;
+    text-transform: inherit;
+    font-size: .875rem;
+    line-height: 1.375rem;
+    letter-spacing: inherit;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1140px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-mainsection-wrapper {
+
+    text-align: left;
+    font-family: Inherit;
+    font-weight: 400;
+    text-transform: inherit;
+    font-size: .875rem;
+    line-height: 1.375rem;
+    letter-spacing: inherit;
+    color: #fff;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin-bottom: 24px;
+}
