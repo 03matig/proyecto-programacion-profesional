@@ -1,0 +1,894 @@
+
+.drawers {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    background: #f5f8ff;
+    margin-top: 80px;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    position: relative;
+    transition: 0.2s;
+    left: 0;
+    right: 0;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+.container {
+
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    font-size: calc(0.91rem + 0.12vw);
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1200px;
+    margin-top: 50px;
+}
+
+.header-maxwidth {
+
+        font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: block;
+    margin: 0 auto;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 24px;
+}
+
+.secondary-navigation {
+
+
+        -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    height: fit-content;
+    margin-bottom: 24px;
+    min-height: 37px;
+    border-bottom: 1px solid #D5DDEA;
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.moremenu {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: block;
+    opacity: 1;
+    background-color: transparent;
+    height: auto;
+}
+
+.nav {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin-top: 0;
+    -webkit-margin-start: .2rem;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-left: 0;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    gap: 32px;
+}
+
+.coursehome {
+
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+}
+
+.pb-4 {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    padding-bottom: 1.5rem!important;
+    flex: 1 0 auto;
+}
+
+.course-content {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin-top: 0;
+}
+
+.accesshide {
+
+   text-align: left;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: inherit;
+    text-transform: inherit;
+    color: #2f3847;
+    font-size: 2.125rem;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.topics {
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    scrollbar-color: #d5ddea #f8f9fa;
+    padding-left: 0px;
+}
+
+.course-section {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    list-style: none;
+    padding: 24px;
+    background-color: #fff;
+    border: 1px solid #edf1f6;
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.course-section-header {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+}
+
+.d-flex {
+
+    display: flex!important;
+    justify-content: space-between!important;
+    align-items: center!important;
+    position: relative!important;
+    width: 100%!important;
+}
+
+.sectionid-111648-title {
+
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin-top: 0;
+    display: flex!important;
+    align-items: center!important;
+    align-self: stretch!important;
+    margin-bottom: 0!important;
+    font-weight: 700;
+    line-height: 32px;
+    font-family: inherit;
+    text-transform: inherit;
+    color: #2f3847;
+    font-size: 1.2rem;
+}
+
+.border-0 {
+
+
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    text-decoration: none;
+    color: #2f3847!important;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent;
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    border: 0!important;
+    justify-content: center!important;
+    margin: 0!important;
+    padding: 0!important;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    letter-spacing: 0rem;
+    font-family: Inherit;
+    text-transform: Inherit;
+    font-weight: 600;
+    line-height: 1.063;
+    font-size: .875rem;
+    cursor: pointer;
+}
+
+.expanded-icon {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);    list-style: none;
+    color: #2f3847!important;
+    text-align: center;
+    letter-spacing: 0rem;
+    font-family: Inherit;
+    text-transform: Inherit;
+    font-weight: 600;
+    line-height: 1.063;
+    font-size: .875rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex;
+    align-items: center;
+}
+
+
+.edw-icon-Down-Arrow {
+
+    list-style: none;
+    color: #2f3847!important;
+    text-align: center;
+    letter-spacing: 0rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    font-family: "Remui"!important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 24px;
+}
+
+.collapsed-icon {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);    list-style: none;
+    color: #2f3847!important;
+    text-align: center;
+    user-select: none;
+    letter-spacing: 0rem;
+    font-family: Inherit;
+    text-transform: Inherit;
+    font-weight: 600;
+    line-height: 1.063;
+    font-size: .875rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex;
+    align-items: center;
+}
+
+.dir-rtl-hide {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);    list-style: none;
+    color: #2f3847!important;
+    text-align: center;
+    user-select: none;
+    letter-spacing: 0rem;
+    font-family: Inherit;
+    text-transform: Inherit;
+    font-weight: 600;
+    line-height: 1.063;
+    font-size: .875rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    padding: 0!important;
+}
+
+.flex-fill {
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    flex: 1 1 auto!important;
+    justify-content: flex-end!important;
+    align-self: center!important;
+    position: absolute;
+    right: 56px;
+}
+
+.section-collapsemenu {
+
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    text-decoration: none;
+    background-color: transparent;
+    color: #2f3847!important;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: Inherit;
+    font-size: .75rem;
+    line-height: 1.571;
+    text-transform: Inherit;
+    letter-spacing: 0rem;
+}
+
+.sectionbadges {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    align-items: center!important;
+}
+
+.show {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.m-0 {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    -webkit-margin-start: .2rem;
+    display: block!important;
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.activity {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+.activity-item {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    position: relative;
+    border-radius: .25rem;
+    padding: 0!important;
+    border: 1px solid #edf1f6;
+}
+
+.activity-basis {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    align-items: center!important;
+}
+
+.flex-column {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    align-self: flex-start!important;
+    flex-direction: row!important;
+    width: 100%!important;
+}
+
+.activity-instance {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    flex-direction: column!important;
+}
+
+.activitytitle {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex;
+    align-items: flex-start;
+    align-self: flex-start!important;
+    position: relative!important;
+}
+
+.activityiconcontainer {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    align-self: flex-start!important;
+    margin-right: 1rem!important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .7rem;
+    border-radius: 0.25rem!important;
+    width: 3rem;
+    height: 3rem;
+    background-color: #f7634d;
+}
+
+.activityicon {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    border-style: none;
+    vertical-align: middle;
+    margin: 0;
+    height: 24px;
+    width: 24px;
+    filter: brightness(0) invert(1);
+}
+
+.media-body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);        
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    flex: 1;
+    align-self: center!important;
+}
+
+.h-regular-5 {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);    
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    font-weight: 400;
+    line-height: 24px;
+    font-family: inherit;
+    text-transform: inherit;
+    color: #2f3847;
+    font-size: 1rem;
+    display: none;
+}
+
+.activityname {
+        -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    letter-spacing: 0rem;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    font-weight: 700;
+    line-height: 28px;
+    font-family: inherit;
+    text-transform: inherit;
+    color: #2f3847;
+    font-size: 1.1rem;
+}
+
+.aalink {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    letter-spacing: 0rem;
+    list-style: none;
+    font-weight: 700;
+    line-height: 28px;
+    font-family: inherit;
+    text-transform: inherit;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    text-decoration: none;
+    background-color: transparent;
+    color: #2f3847!important;
+}
+
+.nav-item {
+
+        -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1440px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    line-height: 1.571;
+    color: #4C5A73;
+    letter-spacing: 0rem;
+    font-family: Inherit;
+    font-size: 14px;
+    text-transform: inherit;
+    font-weight: 400;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: block;
+}
+
+.nav-link {
+
+    -webkit-font-smoothing: antialiased;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1440px;
+    letter-spacing: 0rem;
+    font-family: Inherit;
+    font-size: 14px;
+    text-transform: inherit;
+    list-style: none;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border-right: none;
+    border-left: none;
+    padding-right: 0;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    border-color: transparent;
+    background: transparent;
+    height: 77px;
+    border-top: none;
+    border-bottom: none;
+    position: relative;
+    line-height: 17px;
+    color: #4C5A73!important;
+    font-weight: 700;
+}
+
+.header-heading {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --blue: #0051f9;
+    --indigo: #6610f2;
+    --purple: #613d7c;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #ffc107;
+    --yellow: #ff7518;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6a737b;
+    --gray-dark: #343a40;
+    --primary: #0051f9;
+    --secondary: #6a737b;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --brand-primary: #757575;
+    --brand-secondary: #37BE71;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1440px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --activityadministration: #5d63f6;
+    --activityassessment: #eb66a2;
+    --activitycollaboration: #f7634d;
+    --activitycommunication: #11a676;
+    --activitycontent: #399be2;
+    --activityinterface: #a378ff;
+    text-align: left;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    font-family: inherit;
+    text-transform: inherit;
+    color: #2f3847;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 40px;
+    margin: 0;
+}
+
+.flex-wrap {
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    --blue: #0051f9;
+    --indigo: #6610f2;
+    --purple: #613d7c;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #ffc107;
+    --yellow: #ff7518;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6a737b;
+    --gray-dark: #343a40;
+    --primary: #0051f9;
+    --secondary: #6a737b;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --brand-primary: #757575;
+    --brand-secondary: #37BE71;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1440px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --activityadministration: #5d63f6;
+    --activityassessment: #eb66a2;
+    --activitycollaboration: #f7634d;
+    --activitycommunication: #11a676;
+    --activitycontent: #399be2;
+    --activityinterface: #a378ff;
+    font-family: Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Helvetica Neue,Arial,Noto Sans,Liberation Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    text-align: left;
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+    display: flex!important;
+    flex-wrap: wrap!important;
+}
