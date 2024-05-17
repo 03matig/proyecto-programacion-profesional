@@ -2,39 +2,65 @@ import React, {useState} from 'react';
 import './styles/Login_styles.css';
 import './imagenes/webc-logo.png';
 import { useNavigate } from 'react-router-dom';
-//import { useState } from 'react';
 //import '/node_modules/node_modules_bootstrap/bootstrap/dist/css/bootstrap.min.css';
 import { Nav, NavBar, Container, Row, Col } from 'react-bootstrap';
 
 export function Login ({setUser}) {
-    const [usuario, setUsuario] = useState("");
-    const [contraseña, setContraseña] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
+    const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault(); //esta función permite el inicio de sesión y hace que arroje error cuando alguno de los campos está vacío
 
-        if (usuario == "" || contraseña == ""){
+        if (username == "" || password == ""){
             setError(true);
             return
         }
         setError(false);
-        setUser([usuario])
-    }
-    const navigate = useNavigate()
+        setUser([username])
+
+        console.log('Sending request to backend');  // Log de solicitud
+
+        try {
+            const response = await fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                console.log('Login successful', data);
+                navigate('/Home');
+            } else {
+                console.log('Login failed', data);
+                setError(data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setError('Algo anduvo mal. Por favor, intente de nuevo más tarde.');
+        }
+        };
+    
+
     const handleclick=() => {
-        navigate("/Home")
+       navigate("/Home")
     }
                 return (
                     <Container>
-                    <div class="login-wrapper" id="yui_3_17_2_1_1711466503022_33" style= {{display: 'flex'  , alignItems: 'center' , justifyContent: 'center' , height: '100%', padding: '32px'}}>
+                    <div class="login-wrapper" id="yui_3_17_2_1_1711466503022_33" style= {{ alignItems: 'center' , justifyContent: 'center' , height: '100%', padding: '32px'}}>
                         <div class="login-container" style={{width:'422px', height:'auto', padding: '32px'}}>
                             <Container><div class="logo-area r-mb-16" style = {{padding: '5px', textAlign: 'center', boxSizing: 'border-box'}}>
                                 <img src="//webc.uai.cl/pluginfile.php/1/theme_remui/loginpanellogo/1711007324/logo_pregrado.png" class="logo" style={{ width: '200px', height: 'auto', verticalAlign : 'middle', justifyContent: 'center', alignItems : 'center' }}>
                                 </img>
                             </div></Container>
-                            <div role="main"><span id="maincontent"></span><div class="loginform d-flex flex-column flex-gap-8">
-                                <div class="login-welcome-wrapper d-flex flex-column flex-gap-1 text-center" style={{ verticalAlign : 'middle', justifyContent: 'center', alignItems : 'center', textAlign: 'center' }}>
+                            <div role="main"><span id="maincontent"></span><div class="loginform d-flex  flex-gap-8">
+                                <div class="login-welcome-wrapper d-flex  flex-gap-1 text-center" style={{ verticalAlign : 'middle', justifyContent: 'center', alignItems : 'center', textAlign: 'center' }}>
                                     <h2 class="h-bold-3 m-0">
                                         Hola, bienvenido a UAI Webcursos Pregrado
                                     </h2>
@@ -47,7 +73,7 @@ export function Login ({setUser}) {
                                     <label class="text-link-semibold form-label-color" tabindex="-1">
                                         Nombre de usuario<br></br>
                                     </label>
-                                    <input type="text" name="username" id="username" class="form-control form-control-lg" value= {usuario} onChange = {e => setUsuario(e.target.value)} placeholder="Nombre de usuario" autocomplete="username"style={{textAlign:'center'}}></input>
+                                    <input type="text" name="username" id="username" class="form-control form-control-lg" value= {username} onChange = {(e) => setUsername(e.target.value)} placeholder="Nombre de usuario" autocomplete="username"style={{textAlign:'center'}}></input>
                                 </div>
                                 <div class="login-form-password form-group" style={{textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
                                     <label for="password" class="sr-only">
@@ -57,7 +83,7 @@ export function Login ({setUser}) {
                                         Contraseña <br></br>
                                     </label>
                                     <div class="position-relative password-field-eye">
-                                        <input type="password" name="password" id="password" value={contraseña} onChange = { e => setContraseña(e.target.value)} class="form-control form-control-lg" placeholder="Contraseña" autocomplete="current-password" style={{textAlign:'center'}}></input>                                            
+                                        <input type="password" name="password" id="password" value={password} onChange = {(e) => setPassword(e.target.value)} class="form-control form-control-lg" placeholder="Contraseña" autocomplete="current-password" style={{textAlign:'center'}}></input>                                            
                                         <span class="edw-icon edw-icon-Show show-password-icon"></span>
                                     </div>
                                 </div>
@@ -65,12 +91,12 @@ export function Login ({setUser}) {
                                     <a href="https://webc.uai.cl/login/forgot_password.php">¿Olvidó su contraseña?</a>
                                 </div>
                                 <div class="login-form-submit form-group">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit" id="loginbtn" onClick={() => handleclick()}>Acceder</button>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit" id="loginbtn">Acceder</button>
                                 </div>
                         </form>
                         {error && <p style={{textAlign:'center'}}>Todos los campos son obligatorios!</p>}
 
-                    <div class="login-identityproviders d-flex flex-column flex-gap-6" style={{ verticalAlign : 'middle', justifyContent: 'center', alignItems : 'center', textAlign: 'center' }}>
+                    <div class="login-identityproviders d-flex flex-gap-6" style={{ verticalAlign : 'middle', justifyContent: 'center', alignItems : 'center', textAlign: 'center' }}>
                         <h2 class="login-heading text-align-middle h-semibold-6 m-0">O inicie sesión con su cuenta</h2>
 
                         <div class="login-identityprovider-btn-wrapper d-flex flex-gap-6 justify-content-center">
@@ -113,10 +139,8 @@ export function Login ({setUser}) {
                             
                                 </div>
                             </div>
-                        <a class="text-link-semibold" href="#" data-modal="alert" data-modal-title-str="[&quot;cookiesenabled&quot;, &quot;core&quot;]" data-modal-content-str="[&quot;cookiesenabled_help_html&quot;, &quot;core&quot;]">Aviso de Cookies</a>
                     </div>
                     
             </div></div>
                                 </div></div></Container>
-    )
-}
+    )}
