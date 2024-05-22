@@ -7,10 +7,11 @@ from flask_cors import CORS
 from uuid import UUID
 from pymongo import MongoClient
 import bcrypt
+from flask_bcrypt import Bcrypt
 
 # Establezco la instancia y la llamo por medio de una variable.
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/Universidad' #acá se puede ver que se accede a la base de datos MongoDB, llamada "Universidad" alojada en el localhost en el puerto 27017
+app.config['MONGO_URI'] = 'mongodb://MatiasGarin:MatiasGarin1@cluster0.hck92kq.mongodb.net/' #acá se puede ver que se accede a la base de datos MongoDB, llamada "Universidad" alojada en el localhost en el puerto 27017
 mongo = PyMongo(app)
 
 #Configuraciones
@@ -19,9 +20,44 @@ CORS(app)
 # Base de Datos
 db = mongo.db
 
-#@app.route('/')
-#def index():
-#    return render_template('index.html')
+#def crear_usuario_automatico(username, nombre, password, rol):
+    # Hashear y saltear la contraseña
+ #   hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    # Insertar usuario en la base de datos
+  #  db.users.insert_one({
+   #     'username': username,
+    #    'nombre': nombre,
+     #   'password': hashed_password,
+      #  'rol': rol
+    #})
+
+# Crear usuario automáticamente al iniciar la aplicación Flask
+#@app.before_first_request
+#def crear_usuarios_automaticamente():
+    # Datos de los usuarios a crear
+ #   usuarios = [
+  #      {'username': 'magarin@alumnos.uai.cl', 'nombre': 'Matías Garín', 'password': 'testpassword1', 'rol': 'alumno'},
+   #     {'username': 'jacofre@alumnos.uai.cl', 'nombre': 'Javiera Cofré', 'password': 'testpassword2', 'rol': 'profesorUniversidad'},
+    #    {'username': 'admin@admin.uai.cl', 'nombre': 'Admin', 'password': 'admin123', 'rol': 'adminUniversidad'}
+    #]
+
+    # Verificar la existencia de cada usuario antes de crearlo
+    #for usuario_data in usuarios:
+     #   if not db.users.find_one({'username': usuario_data['username']}):
+            # Crear usuario si no existe
+      #      crear_usuario_automatico(usuario_data['username'], usuario_data['nombre'], usuario_data['password'], usuario_data['rol'])
+
+#Acá verificaré la creación automática del usuario
+@app.route('/verificar_usuario_automatico', methods=['GET'])
+def verificar_creacion_automatica():
+    # Obtener el usuario creado automáticamente
+    usuario = db.users.find_one({'username': 'magarin@alumnos.uai.cl'})
+
+    if usuario:
+        return jsonify({'message': 'Usuario creado automáticamente:', 'usuario': usuario})
+    else:
+        return jsonify({'message': 'No se encontró el usuario creado automáticamente'})
 
 @app.route('/login', methods=['POST'])
 def login():
