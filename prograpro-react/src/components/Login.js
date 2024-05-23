@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './styles/Login_styles.css';
 import './imagenes/webc-logo.png';
 import { useNavigate } from 'react-router-dom';
-//import '/node_modules/node_modules_bootstrap/bootstrap/dist/css/bootstrap.min.css';
 import { Nav, NavBar, Container, Row, Col } from 'react-bootstrap';
 
 export function Login ({setUser}) {
