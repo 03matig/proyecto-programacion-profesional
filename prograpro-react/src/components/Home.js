@@ -1,5 +1,4 @@
-
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/Home_styles.css';
 import { Login } from './Login';
 import { useNavigate } from 'react-router-dom';
@@ -8,13 +7,20 @@ import { Navbar } from './Navbar';
 import { Dropdown, DropdownButton, DropdownItem, DropdownMenu, DropdownDivider, DropdownToggle, NavDropdown, Popover,  } from 'react-bootstrap';
 
 export function Home ({ user, setUser }) {
+    const [nombreUsuario, setNombreUsuario] = useState(""); // Estado para almacenar el nombre del usuario
 
     const navigate = useNavigate()
     const handleclick=() => {
         navigate("/Course")
     }
+
+    // Función para obtener el nombre del usuario al iniciar la página
+    useEffect(() => {
+        setNombreUsuario(user); // Se establece el nombre de usuario obtenido del prop user
+    }, [user]);
+
     const handleLogout = () => {
-        setUser([])
+        setUser([]) //esta función permite el cierre manual de sesión (fue creada en una primera instancia a modo de prueba, no se ha implementado como tal en el boceto final del frontend)
     }
 
     return (
@@ -54,7 +60,7 @@ export function Home ({ user, setUser }) {
             </div>
             <div class="d-flex align-items-center">
                 <div class="dashboard-bar-wrapper">
-                            <div class="page-context-header"><div class="page-header-headings"><h1 class="h2 header-heading">¡Hola, {user}!</h1></div></div>
+                            <div class="page-context-header"><div class="page-header-headings"><h1 class="h2 header-heading">¡Hola, {user}!</h1></div></div> 
                 </div>
                 <div class="header-actions-container " data-region="header-actions-container">
                 </div>
