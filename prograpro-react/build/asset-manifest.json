@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.523954c4.css",
+    "main.js": "/static/js/main.57f81359.js",
+    "static/js/453.a77c9314.chunk.js": "/static/js/453.a77c9314.chunk.js",
+    "static/media/plataforma-academica-pregrado.png": "/static/media/plataforma-academica-pregrado.7334a8647004dc00b3b8.png",
+    "static/media/webc-logo.png": "/static/media/webc-logo.a86d1416a6c409bc4e15.png",
+    "index.html": "/index.html",
+    "main.523954c4.css.map": "/static/css/main.523954c4.css.map",
+    "main.57f81359.js.map": "/static/js/main.57f81359.js.map",
+    "453.a77c9314.chunk.js.map": "/static/js/453.a77c9314.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.523954c4.css",
+    "static/js/main.57f81359.js"
+  ]
+}
