@@ -34,7 +34,7 @@ export function Login ({setUser}) {
             const data = await response.json();
 
             if (response.ok) {
-                console.log('Login successful', data);
+                console.info('Login successful', data);
                 navigate('/Home');
             } else {
                 console.log('Login failed', data);
