@@ -7,6 +7,8 @@ import { Nav, NavBar, Container, Row, Col } from 'react-bootstrap';
 export function Login ({setUser}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [rol,setRol] = useState("");
     const [error, setError] = useState(false);
     const navigate = useNavigate()
 
@@ -23,7 +25,7 @@ export function Login ({setUser}) {
         console.log('Sending request to backend');  // Log de solicitud
 
         try {
-            const response = await fetch('http://localhost:5000/login', {
+            const response = await fetch('http://127.0.0.1:5000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,7 +37,10 @@ export function Login ({setUser}) {
 
             if (response.ok) {
                 console.info('Login successful', data);
-                navigate('/Home');
+                const { _id, nombre, rol } = data;
+                setNombre(nombre);
+                localStorage.setItem('userId', _id);
+                navigate('/Home', { state: { nombre, rol } });
             } else {
                 console.log('Login failed', data);
                 setError(data.message);
@@ -53,7 +58,7 @@ export function Login ({setUser}) {
                 return (
                     <Container>
                     <div class="login-wrapper" id="yui_3_17_2_1_1711466503022_33" style= {{ alignItems: 'center' , justifyContent: 'center' , height: '100%', padding: '32px'}}>
-                        <div class="login-container" style={{width:'422px', height:'auto', padding: '32px'}}>
+                        <div class="login-container" style={{width:'422px', height:'auto', padding: '32px', borderRadius:'8px'}}>
                             <Container><div class="logo-area r-mb-16" style = {{padding: '5px', textAlign: 'center', boxSizing: 'border-box'}}>
                                 <img src="//webc.uai.cl/pluginfile.php/1/theme_remui/loginpanellogo/1711007324/logo_pregrado.png" class="logo" style={{ width: '200px', height: 'auto', verticalAlign : 'middle', justifyContent: 'center', alignItems : 'center' }}>
                                 </img>
@@ -143,3 +148,4 @@ export function Login ({setUser}) {
             </div></div>
                                 </div></div></Container>
     )}
+
