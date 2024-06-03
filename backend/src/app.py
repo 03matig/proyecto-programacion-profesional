@@ -73,6 +73,7 @@ def login():
     data = request.get_json()
     username = data['username']
     password = data['password']
+    #nombre = data['nombre']
 
     app.logger.debug('Received login request for username: %s', username)
 
@@ -85,13 +86,31 @@ def login():
 
         app.logger.debug('User found in database: %s', user)
 
+            
+
         # Verificar la contraseña proporcionada contra el hash almacenado
         if bcrypt.check_password_hash(stored_password, password):
-            return jsonify({'message': 'Login successful'})
+            return jsonify({
+                'message': 'Login successful',
+                '_id': str(user['_id']),
+                'nombre': user['nombre'],
+            }), 200
         else:
             return jsonify({'message': 'Invalid username or password'}), 401
     else:
         return jsonify({'message': 'User not found'}), 404
+
+@app.route('/get_user_role', methods=['GET'])
+def get_user_role():
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'User ID is required'}), 400
+
+    user = db.users.find_one({'_id': ObjectId(user_id)})
+    if user:
+        return jsonify({'role': user.get('rol')}), 200
+    else:
+        return jsonify({'error': 'User not found'}), 404
 
 
 @app.route('/mostrar_usuarios', methods=['GET'])
@@ -118,7 +137,7 @@ def createUser():       #esta funcionalidad, sería, dentro de las funcionalidad
 @app.route('/users', methods=['GET'])
 def getUsers():
     users = []
-    for doc in db.Login.find(): #db.find() => db.Login.find();
+    for doc in db.users.find(): #db.find() => db.Login.find();
         #if 'userId' in doc:
             users.append({
                 '_id': str(ObjectId(doc['_id'])),
