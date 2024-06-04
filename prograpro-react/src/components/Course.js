@@ -9,7 +9,7 @@ export const Course = () => {
 return (
 <div> 
 <Navbar />
-<div id="page" data-region="mainpage" data-usertour="scroller" class="drawers drag-container">
+<div id="page" data-region="mainpage" data-usertour="scroller" class="drag-container">
         
         <section id="region-fullwidthtop-blocks" class="has-blocks" aria-label="region top blocks">
             <div role="main">
