@@ -6,16 +6,19 @@ from flask_pymongo import PyMongo
 from flask_cors import CORS
 from uuid import UUID
 from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+import logging
 
 # Establezco la instancia y la llamo por medio de una variable.
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb+srv://MatiasGarin:31102023@cluster0.hck92kq.mongodb.net/Universidad'
-#app.config['MONGO_URI'] = 'mongodb://localhost:27017/Universidad'
+app.config['JWT_SECRET_KEY'] = 'JSONWebToken_secret_key'
 mongo = PyMongo(app) 
 bcrypt = Bcrypt(app)
 
 #Configuraciones
 CORS(app) 
+jwt = JWTManager(app)
 
 # Base de Datos
 db = mongo.db
@@ -90,8 +93,10 @@ def login():
 
         # Verificar la contraseña proporcionada contra el hash almacenado
         if bcrypt.check_password_hash(stored_password, password):
+            access_token = create_access_token(identity=str(user['_id']))
             return jsonify({
                 'message': 'Login successful',
+                'access_token': access_token,
                 '_id': str(user['_id']),
                 'nombre': user['nombre'],
             }), 200
