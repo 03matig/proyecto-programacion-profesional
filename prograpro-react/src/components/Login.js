@@ -37,8 +37,9 @@ export function Login ({setUser}) {
 
             if (response.ok) {
                 console.info('Login successful', data);
-                const { _id, nombre, rol } = data;
+                const { access_token, _id, nombre, rol } = data;
                 setNombre(nombre);
+                localStorage.setItem('accessToken', access_token);
                 localStorage.setItem('userId', _id);
                 navigate('/Home', { state: { nombre, rol } });
             } else {
@@ -148,4 +149,5 @@ export function Login ({setUser}) {
             </div></div>
                                 </div></div></Container>
     )}
+
 
