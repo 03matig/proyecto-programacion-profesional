@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import './styles/Login_styles.css';
 import './imagenes/webc-logo.png';
 import { useNavigate } from 'react-router-dom';
-import { Nav, NavBar, Container, Row, Col } from 'react-bootstrap';
+import DOMPurify from 'dompurify';
+
 
 export function Login ({setUser}) {
     const [username, setUsername] = useState("");
@@ -10,10 +11,15 @@ export function Login ({setUser}) {
     const [nombre, setNombre] = useState("");
     const [rol,setRol] = useState("");
     const [error, setError] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    // Definimos la función de Sanitización de los inputs de usuario
+    const sanitizeInput = (input) => {
+        return DOMPurify.sanitize(input);
+    }; 
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); //esta función permite el inicio de sesión y hace que arroje error cuando alguno de los campos está vacío
+        e.preventDefault(); 
 
         if (username == "" || password == ""){
             setError(true);
@@ -25,23 +31,27 @@ export function Login ({setUser}) {
         console.log('Sending request to backend');  // Log de solicitud
 
         try {
+            const sanitizedUsername = sanitizeInput(username);
+            const sanitizedPassword = sanitizeInput(password);
+            console.log('Contraseña Sanitizada', sanitizedPassword); // Verificamos la sanitización del input de usuario para la contraseña
+
             const response = await fetch('http://127.0.0.1:5000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ username: sanitizedUsername, password: sanitizedPassword }), // Le entregamos al backend los inputs sanitizados.
             });
 
             const data = await response.json();
 
             if (response.ok) {
                 console.info('Login successful', data);
-                const { access_token, _id, nombre, rol } = data;
+                const { access_token, _id, nombre } = data;
                 setNombre(nombre);
                 localStorage.setItem('accessToken', access_token);
                 localStorage.setItem('userId', _id);
-                navigate('/Home', { state: { nombre, rol } });
+                navigate('/Home', { state: { nombre } });
             } else {
                 console.log('Login failed', data);
                 setError(data.message);
