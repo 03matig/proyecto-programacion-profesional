@@ -1,0 +1,451 @@
+
+body {
+    text-transform: inherit;
+    letter-spacing: 0rem;
+    height: 100%;
+    margin: 0;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Inter, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.571;
+    color: #4C5A73;
+    background-color: #f5f9fd;
+}
+
+.activityiconcontainer.content{
+    background-color:#399be2;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+.d-flex {
+    display: flex !important;
+}
+
+#page-header {
+    padding-top: 3.5rem;
+    margin-bottom: 24px;
+}
+
+header {
+    display: block;
+}
+
+.header-maxwidth{
+    margin: 0 auto;
+}
+
+.w-100{
+    width: 100% !important;
+}
+
+
+
+#page-header #page-navbar:not(.has-actions) {
+    margin-bottom: 24px;
+}
+
+#page.drawers {
+    margin-top: 80px;
+    scrollbar-width: thin;
+    scrollbar-color: #d5ddea #f8f9fa;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+nav {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: transparent;
+    border-radius: .25rem;
+}
+
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+#page-header #page-navbar nav ol.breadcrumb .breadcrumb-item {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+}
+
+#page-header #page-navbar nav ol.breadcrumb .breadcrumb-item{
+    font-size: .75rem;
+}
+
+#page-header #page-navbar nav ol.breadcrumb .breadcrumb-item{
+    color: #657187;
+    font-family: Inherit;
+    font-size: .75rem;
+    line-height: 1.571;
+    text-transform: Inherit;
+    letter-spacing: 0rem;
+}
+
+#page-header #page-navbar nav ol.breadcrumb .breadcrumb-item a {
+    color: #757575;
+}
+
+#page.drawers .main-inner {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.main-area-bg:not(.pagelayout-login) div[role="main"] {
+    background: #fff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 13px 37px rgba(92, 107, 121, .1);
+}
+
+
+#main-caja-blanca {
+    background: #fff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 13px 37px rgba(92, 107, 121, .1);
+}
+
+
+.container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.header-wrapper{
+    width:100% !important;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+    
+}
+
+.align-items-center {
+    align-items: center !important;
+    
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+
+
+.line-height-3 {
+    line-height: 1rem !important;
+}
+
+.text-muted {
+    color: #6a737b !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+
+.small {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.page-context-header{
+    display:flex;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mr-3 {
+    margin-right: 1rem !important;
+}
+
+.singlebutton {
+    display: inline-block;
+}
+
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+input {
+    
+    overflow: visible;
+}
+
+input[type="hidden" i] {
+    appearance: none;
+    background-color: initial;
+    cursor: default;
+    display: none !important;
+    padding: initial;
+    border: initial;
+}
+
+.btn:not(:disabled):not(.disabled), #page-calendar-view .cal_courses_flt:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+
+.btn-secondary {
+    color: #0051F9 !important;
+    border-color: #0051F9;
+    background: #FFF;
+}
+
+.btn, #page-calendar-view .cal_courses_flt {
+    border-width: 1.136px;
+    border-radius: 5px;
+    letter-spacing: 0rem;
+    font-family: Inherit;
+    text-transform: Inherit;
+    font-weight: 600;
+    line-height: 1.063;
+    font-size: .875rem;
+    padding-top: .719rem;
+    padding-right: 1rem;
+    padding-bottom: .719rem;
+    padding-left: 1rem;
+}
+
+.btn, #page-calendar-view .cal_courses_flt {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.path-mod-assign div.submissionstatustable, .path-mod-assign div.submissionfull, .path-mod-assign div.submissionlinks, .path-mod-assign div.usersummary, .path-mod-assign div.feedback, .path-mod-assign div.gradingsummary {
+    margin-bottom: 1.5em;
+}
+
+h3, .h3, .h-regular-3, .h-semibold-3, .h-bold-3, #page-admin-setting-themesettingremui #adminsettings fieldset h3.main, .h-exbold-3 {
+    font-family: inherit;
+    text-transform: inherit;
+    color: #2f3847;
+    font-size: 1.5rem;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: .5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+.path-mod-assign .gradingsummarytable, .path-mod-assign .feedbacktable, .path-mod-assign .lockedsubmission, .path-mod-assign .submissionsummarytable {
+    margin-top: 1em;
+}
+
+.pb-3, .py-3 {
+    padding-bottom: 1rem !important;
+}
+
+.pt-3, .py-3 {
+    padding-top: 1rem !important;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.path-mod-assign div.submissionstatus .generaltable, .path-mod-assign div.submissionlinks .generaltable, .path-mod-assign div.feedback .generaltable, .path-mod-assign div.submissionsummarytable .generaltable, .path-mod-assign div.attempthistory table, .path-mod-assign div.gradingsummary .generaltable {
+    width: 100%;
+}
+
+.table-responsive>.table-bordered {
+    border: 0;
+}
+
+table.dataTable, table.generaltable, table.rolecap {
+    font-size: 14px;
+    border-radius: 8px;
+    color: #2f3847;
+    filter: drop-shadow(0 13px 37px rgba(92, 107, 121, .1));
+}
+
+.generaltable {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #4C5A73;
+}
+
+.table-bordered {
+    border: 1px solid #edf1f6;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+    border-spacing: 2px;
+    border-color: gray;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+table.dataTable, table.generaltable, table.rolecap {
+    font-size: 14px;
+    border-radius: 8px;
+    color: #2f3847;
+    filter: drop-shadow(0 13px 37px rgba(92, 107, 121, .1));
+}
+
+.generaltable {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #4C5A73;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+table.dataTable, table.generaltable, table.rolecap {
+    font-size: 14px;
+    border-radius: 8px;
+    color: #2f3847;
+    filter: drop-shadow(0 13px 37px rgba(92, 107, 121, .1));
+}
+
+.generaltable {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #4C5A73;
+}
+
+.path-mod-assign .submissionsummarytable .c0, .path-mod-assign .gradingsummarytable .c0, .path-mod-assign .mod-assign-history-panel .c0 {
+    width: 15em;
+}
+
+.mb-4, .my-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+table.dataTable tbody td, table.dataTable tbody th, table.generaltable tbody td, table.generaltable tbody th, table.rolecap tbody td, table.rolecap tbody th {
+    height: 60px;
+    background-color: #fff;
+    color: #4C5A73;
+    vertical-align: middle;
+    border-top: 1px solid #edf1f6;
+    border-right: 1px solid #edf1f6;
+    font-weight: 400;
+    font-size: .875rem;
+    line-height: 22px;
+}
+
+.generaltable th, .generaltable td {
+    padding: 5px;
+    vertical-align: top;
+    border-top: 1px solid #edf1f6;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #edf1f6;
+}
+
+th {
+    text-align: inherit;
+    text-align: -webkit-match-parent;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
