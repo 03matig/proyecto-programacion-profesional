@@ -6,6 +6,10 @@ html {
 }
 
 .navbar {
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
     background-color: #757575;
     height: 70px;
     justify-content: center;
@@ -52,6 +56,7 @@ html {
     margin-top: 12.5px;
     margin-left: 12px;
   }
+  
 
   .navbar-brand{
     padding: 0 16px;
@@ -146,4 +151,5 @@ html {
     background-color: #575f66;
     border-radius: 4px;
   }
+  
   
