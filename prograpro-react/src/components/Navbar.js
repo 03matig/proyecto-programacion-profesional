@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Navbar_styles.css';
-import logo from './imagenes/webc-logo.png';
 
-export const Navbar = () => {
+
+export function Navbar ({user, setUser}) {
+
     const [webcursosOpen, setWebcursosOpen] = useState(false);
     const [uaiOpen, setUaiOpen] = useState(false);
     const [userRole, setUserRole] = useState(null);
     const navigate = useNavigate();
-
+    
+    const username = localStorage.getItem('username');
     const userId = localStorage.getItem('userId');
   
     const toggleWebcursos = () => {
@@ -26,7 +28,9 @@ export const Navbar = () => {
 
             if (response.ok) {
                 console.info(`User role fetched successfully: ${data.role}`);
+                const { role } = data;
                 setUserRole(data.role);
+                localStorage.setItem('userRole', role);
             } else {
               console.error(data.error);
             }
@@ -40,18 +44,33 @@ export const Navbar = () => {
         navigate('/Dashboard'); 
       };
 
+    const VolveralInicio = () => {
+      navigate('/Home')
+    }
+
+    const VolveralLogin = () => {
+      navigate('/')
+    }
+
+    const handleLogout = () => {
+      setUser([]);
+      localStorage.clear();
+      VolveralLogin();
+    };
+      
+
     return (
       <nav className="navbar">
         <div className="navbar-container">
-          <a href="https://webc.uai.cl/" class="navbar-brand d-none d-md-flex align-items-center m-0 aabtn" aria-label="WebcursosUAIPregrado - Nombre de la marca" title="WebcursosUAIPregrado">
+          <a href="" class="navbar-brand d-none d-md-flex align-items-center m-0 aabtn" aria-label="WebcursosUAIPregrado - Nombre de la marca" title="WebcursosUAIPregrado" onClick={VolveralInicio}>
             <img src="//webc.uai.cl/pluginfile.php/1/theme_remui/logo/1715241806/logo.png" alt="Logo" className="navbar-logo-img" />
           </a>
           <div class="sub-nav">
             <div class="primary-navigation">
                 <ul className="navbar-menu">
-                  <li class="navbar-item"><a href="#" className="navbar-link">Página Principal</a></li>
-                  <li class="navbar-item"><a href="#" className="navbar-link">Área personal</a></li>
-                  <li class="navbar-item"><a href="#" className="navbar-link">Mis cursos</a></li>
+                  <li class="navbar-item" onClick={VolveralInicio}><a href="#" className="navbar-link">Página Principal</a></li>
+                  <li class="navbar-item"><a href="https://webc.uai.cl/my/" className="navbar-link">Área personal</a></li>
+                  <li class="navbar-item"><a href="https://webc.uai.cl/my/courses.php" className="navbar-link">Mis cursos</a></li>
                   <li className="navbar-item ">
                     <a href="#" className="navbar-link dropdown-toggle" onClick={toggleWebcursos}>Webcursos</a>
                     <ul className={`dropdown-menu ${webcursosOpen ? 'show' : ''}`}>
@@ -77,6 +96,7 @@ export const Navbar = () => {
                       ) : null}
                     </ul>
                   </li>
+                  <li class="navbar-item"><a href="#" onClick={handleLogout} className="navbar-link">Cerrar sesión</a></li>
                 </ul>
             </div>
           </div>
