@@ -1,3 +1,6 @@
+.body{
+    background-color: #d5ddea,
+}
 
 .drawers {
 
@@ -22,8 +25,13 @@
     flex-direction: column;
 }
 
+.activityiconcontainer.content .activityicon, .activityiconcontainer.content .icon {
+    filter: brightness(0) invert(1);
+}
 
-
+.activityiconcontainer.content.courseicon.color{
+    background-color: #399be2;
+}
 
 
 .container {
@@ -621,6 +629,7 @@
     height: 3rem;
     background-color: #f7634d;
 }
+
 
 .activityicon {
     -webkit-text-size-adjust: 100%;
