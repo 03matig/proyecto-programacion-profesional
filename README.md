@@ -63,12 +63,12 @@ El proyecto está dividido en dos partes principales: el backend y el frontend.
          ```bash
          pip install virtualenv
          ```
-     -Paso N°2: Creamos el entorno virtual
+     - Paso N°2: Creamos el entorno virtual
          ```bash
          cd backend
          python -m venv .venv
          ```
-     -Paso N°3: Activamos el entorno virtual
+     - Paso N°3: Activamos el entorno virtual
          - En caso de estar ocupando PowerShell en Windows:
             ```bash
             PS C:\> .venv\Scripts\Activate.ps1
@@ -82,17 +82,17 @@ El proyecto está dividido en dos partes principales: el backend y el frontend.
             source .venv/bin/activate
             ```
 
-     -Paso N°4: Instalamos los requerimientos
+     - Paso N°4: Instalamos los requerimientos
          ```bash
          cd src
          pip install -r requirements.txt
          ```
-     -Paso N°5: Desplegamos la aplicación Flask.
-        -Alternativa N°1 (preferente)
+     - Paso N°5: Desplegamos la aplicación Flask.
+        - Alternativa N°1 (preferente)
             ```bash
             python app.py
             ```
-        -Alternativa N°2 (no tan preferente)
+        - Alternativa N°2 (no tan preferente)
             ```bash
             flask run
             ```
