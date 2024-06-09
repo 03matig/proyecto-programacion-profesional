@@ -48,6 +48,54 @@ El proyecto está dividido en dos partes principales: el backend y el frontend.
 - **Archivo Principal**: `app.py`
 - **Dependencias**: Listadas en `requirements.txt`
 - **Docker**: Archivo `Dockerfile` para construir la imagen Docker.
+- **Deploy con Docker**:
+   - Primer paso: Construir la Imágen Docker
+      ```bash
+      cd backend/src
+      docker build -t <nombre-de-la-imagen-docker-frontend> .
+      ```
+   - Segundo paso: Ejecutar la Imágen Docker
+      ```bash
+      docker run -p 5000:5000 <nombre-de-la-imagen-docker-frontend>
+      ```
+- **Deployment normal**:
+     - Paso N°1: Descargamos la librería para crear un entorno virtual
+         ```bash
+         pip install virtualenv
+         ```
+     -Paso N°2: Creamos el entorno virtual
+         ```bash
+         cd backend
+         python -m venv .venv
+         ```
+     -Paso N°3: Activamos el entorno virtual
+         - En caso de estar ocupando PowerShell en Windows:
+            ```bash
+            PS C:\> .venv\Scripts\Activate.ps1
+            ```
+         - En caso de estar ocupando Command Prompt en Windows (cmd):
+            ```bash
+            C:\> .venv\Scripts\activate.bat
+            ```
+         - En caso de estar ocupando Terminal de Linux o Mac:
+            ```bash
+            source .venv/bin/activate
+            ```
+
+     -Paso N°4: Instalamos los requerimientos
+         ```bash
+         cd src
+         pip install -r requirements.txt
+         ```
+     -Paso N°5: Desplegamos la aplicación Flask.
+        -Alternativa N°1 (preferente)
+            ```bash
+            python app.py
+            ```
+        -Alternativa N°2 (no tan preferente)
+            ```bash
+            flask run
+            ```
 
 ### Frontend
 - **Ubicación**: `prograpro-react`
@@ -62,6 +110,20 @@ El proyecto está dividido en dos partes principales: el backend y el frontend.
   - `VistaCrearZoom.js`
 - **Estilos**: Archivos CSS en `styles`
 - **Docker**: Archivo `Dockerfile` para construir la imagen Docker.
+- **Deploy con Docker**:
+   - Primer paso: Construir la Imágen Docker
+      ```bash
+      cd prograpro-react
+      docker build -t <nombre-de-la-imagen-docker-frontend> .
+      ```
+   - Segundo paso: Ejecutar la Imágen Docker
+      ```bash
+      docker run -p 3000:3000 <nombre-de-la-imagen-docker-frontend>
+      ```
+- **Deployment normal**:
+      ```bash
+      npm start
+      ```
 
 ### Base de Datos
 - **MongoDB**: Archivos de respaldo ubicados en `backup-mongodb/Universidad`
@@ -78,3 +140,4 @@ El proyecto está dividido en dos partes principales: el backend y el frontend.
 ### Clonar el Repositorio
 ```bash
 git clone https://github.com/03matig/APP-PROGRAPROFESIONAL.git
+```
