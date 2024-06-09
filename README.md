@@ -121,9 +121,14 @@ El proyecto está dividido en dos partes principales: el backend y el frontend.
       docker run -p 3000:3000 <nombre-de-la-imagen-docker-frontend>
       ```
 - **Deployment normal**:
-      ```bash
-      npm start
-      ```
+   - Primer paso: Entrar a la carpeta del frontend
+         ```bash
+         cd prograpro-react
+         ```
+   - Segundo paso: Iniciar la aplicación React
+         ```bash
+         npm start
+         ```
 
 ### Base de Datos
 - **MongoDB**: Archivos de respaldo ubicados en `backup-mongodb/Universidad`
