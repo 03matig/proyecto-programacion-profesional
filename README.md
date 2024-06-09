@@ -122,13 +122,13 @@ El proyecto está dividido en dos partes principales: el backend y el frontend.
       ```
 - **Deployment normal**:
    - Primer paso: Entrar a la carpeta del frontend
-         ```bash
-         cd prograpro-react
-         ```
+      ```bash
+      cd prograpro-react
+      ```
    - Segundo paso: Iniciar la aplicación React
-         ```bash
-         npm start
-         ```
+      ```bash
+      npm start
+      ```
 
 ### Base de Datos
 - **MongoDB**: Archivos de respaldo ubicados en `backup-mongodb/Universidad`
