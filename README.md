@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Proyecto "Convenios y Defensas"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es la continuación del proyecto "Pasantías UAI" y está diseñado para gestionar convenios y defensas de pasantías en la Universidad Adolfo Ibáñez (UAI).
 
-## Available Scripts
+## Descripción del Proyecto
 
-In the project directory, you can run:
+"Convenios y Defensas" es una aplicación web que facilita la gestión de convenios con empresas y la organización de defensas de pasantías. La aplicación permite a los estudiantes subir sus informes finales, a los profesores crear comisiones de evaluación y a los administradores gestionar todos los aspectos relacionados con las defensas.
 
-### `npm start`
+## Características Principales
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Subida de Informe Final**:
+   - Los estudiantes pueden subir su informe final de pasantía a la plataforma.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Gestión de Convenios**:
+   - Registro de empresas y estado de sus convenios (en trámite, firmado, rechazado).
+   - Dashboard con estadísticas de empresas, notas, evaluaciones, y número de alumnos por empresa y carrera.
 
-### `npm test`
+3. **Creación de Comisiones**:
+   - Portal para que los profesores seleccionen las defensas en las que desean participar.
+   - Visualización del título, día, y hora de cada defensa.
+   - Descarga de PDF del informe.
+   - Inscripción y desinscripción de profesores en defensas.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Asignación de Links de Zoom**:
+   - Envío de notificaciones por correo con los enlaces de las defensas.
 
-### `npm run build`
+5. **Evaluación y Notificación**:
+   - Registro de evaluaciones de las defensas.
+   - Envío de notificaciones y cierre de procesos de evaluación.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6. **Dashboard y Comunicación Masiva**:
+   - Analítica y estadísticas de alumnos por curso, generación y carrera.
+   - Lista de estudiantes en las comisiones con detalle de notas finales y feedback.
+   - Envío de correos según filtros (carrera, generación, número de paso).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+7. **Inscripción Inicial**:
+   - Subida de un archivo CSV con información de alumnos y profesores.
+   - Opciones para borrar o agregar estudiantes.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Estructura del Proyecto
 
-### `npm run eject`
+El proyecto está dividido en dos partes principales: el backend y el frontend.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Backend
+- **Ubicación**: `backend/src`
+- **Lenguaje**: Python
+- **Framework**: Flask
+- **Archivo Principal**: `app.py`
+- **Dependencias**: Listadas en `requirements.txt`
+- **Docker**: Archivo `Dockerfile` para construir la imagen Docker.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Frontend
+- **Ubicación**: `prograpro-react`
+- **Lenguaje**: JavaScript
+- **Framework**: React
+- **Componentes Principales**:
+  - `Dashboard.js`
+  - `Home.js`
+  - `Login.js`
+  - `Navbar.js`
+  - `Pasantia.js`
+  - `VistaCrearZoom.js`
+- **Estilos**: Archivos CSS en `styles`
+- **Docker**: Archivo `Dockerfile` para construir la imagen Docker.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Base de Datos
+- **MongoDB**: Archivos de respaldo ubicados en `backup-mongodb/Universidad`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Requisitos Técnicos
 
-## Learn More
+- **Backend**: Python 3.x, Flask
+- **Frontend**: Node.js, React
+- **Base de Datos**: MongoDB
+- **Docker**: Para contenedores de backend y frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Instalación y Configuración
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Clonar el Repositorio
+```bash
+git clone https://github.com/03matig/APP-PROGRAPROFESIONAL.git
