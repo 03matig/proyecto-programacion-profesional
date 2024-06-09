@@ -1,14 +1,22 @@
-import React, {useState} from 'react';
 import './styles/Course_styles.css';
 import { Navbar }   from './Navbar';
-import { Dropdown, DropdownButton, DropdownItem, DropdownMenu, DropdownDivider, DropdownToggle, NavDropdown, Popover,  } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export const Course = () => {
+    const userRole = localStorage.getItem('userRole');
+    const navigate = useNavigate();
 
+    const handleNavigation = () => {
+        navigate('/Pasantia');
+    };
+    
+    const handleNavigationZoom = () => {
+        navigate('/VistaCrearZoom');
+    };
 
+    console.log('El rol del usuario es ' + userRole);
 return (
 <div> 
-<Navbar />
 <div id="page" data-region="mainpage" data-usertour="scroller" class="drag-container">
         
         <section id="region-fullwidthtop-blocks" class="has-blocks" aria-label="region top blocks">
@@ -123,12 +131,6 @@ return (
                                         </div>
                             <div data-region="sectionbadges" class="sectionbadges d-flex align-items-center">
                             </div>
-                            <div class="flex-fill d-flex justify-content-end align-self-center collapse-all-menu">
-                                <a id="collapsesections" class="section-collapsemenu small-info-semibold" href="#" aria-expanded="true" role="button" data-toggle="toggleall" aria-controls="collapssesection0 collapssesection1 collapssesection2 collapssesection3 collapssesection4 collapssesection5 collapssesection6 collapssesection7 collapssesection8 collapssesection9 collapssesection10">
-                                    <span class="collapseall text-nowrap">Colapsar todo</span>
-                                    <span class="expandall text-nowrap">Expandir todo</span>
-                                </a>
-                                </div>
                             </div>
                             <div id="coursecontentcollapse0" class="content 
                                     course-content-item-content collapse show
@@ -302,16 +304,14 @@ return (
                                                                                                 <img src="https://webc.uai.cl/theme/image.php/remui/turnitintooltwo/1712049482/monologo" class="activityicon " alt="turnitintooltwo icon" loading="lazy"/>
                                                                                             </div>
                                                                                             <div class="media-body align-self-center">
-                                                                                                <div class="small h-regular-5 text-font-small">
-                                                                                                    Ejercicio 2 de Turnitin
-                                                                                                </div>
                                                                                                 <div class="activityname h-bold-4 color-font-headings">
-                                                                                                                <a href="https://webc.uai.cl/mod/turnitintooltwo/view.php?id=391568" class=" aalink stretched-link" onclick="">        <span class="instancename">Entrega avance 1 <span class="accesshide "> Ejercicio 2 de Turnitin</span></span>    </a>
+                                                                                                                <a class=" aalink stretched-link" >     <span class="instancename" onClick={handleNavigation}>ENTREGA INFORME DE PASANTÍA</span>    </a>
                                                                                                             
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
+                                                                                    
                                                                 
                                                                             <div class="activity-info mt-1 mt-md-0">
                                                                                     <div data-region="activity-information" data-activityname="TURNITIN ENTREGA INFORME 3 Y FINAL" class="activity-information">
@@ -325,6 +325,45 @@ return (
                                                                 </div>
                                                         </div>
                                                 </li>
+                                                <li class="activity activity-wrapper turnitintooltwo modtype_turnitintooltwo   " id="module-391568" data-for="cmitem" data-id="391568" data-indexed="true">
+                                                        <div class="activity-item " data-activityname="TURNITIN ENTREGA INFORME 3 Y FINAL">
+
+                                                                <div class="activity-basis d-flex align-items-center">
+                                                                    <div class="d-flex flex-column flex-md-row w-100 align-self-start">
+                                                                        
+                                                                                    {userRole === 'profesorUniversidad' || userRole === 'adminUniversidad' ? (
+                                                                                    <>
+                                                                                    <div class="activity-instance d-flex flex-column">
+                                                                                        <div class="activitytitle media  modtype_turnitintooltwo position-relative align-self-start">
+                                                                                            <div class="activityiconcontainer content courseicon color align-self-start mr-3">
+                                                                                                <img src="https://webc.uai.cl/theme/image.php/remui/url/1715241806/monologo?filtericon=1" class="activityicon " alt="url icon" loading="lazy"/>
+                                                                                            </div>
+                                                                                            <div class="media-body align-self-center">
+                                                                                                <div class="activityname h-bold-4 color-font-headings">
+                                                                                                                <a class=" aalink stretched-link" onClick={handleNavigationZoom}>     <span class="instancename">CREAR LINK DE ZOOM</span>    </a>
+                                                                                                            
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    </>
+                                                                                    ) : null}
+                                                                                    
+                                                                
+                                                                            <div class="activity-info mt-1 mt-md-0">
+                                                                                    <div data-region="activity-information" data-activityname="TURNITIN ENTREGA INFORME 3 Y FINAL" class="activity-information">
+                                                                                    </div>
+                                                                            </div>
+                                                                    </div>
+                                                                
+                                                                </div>
+                                                                
+                                                                <div class="description">
+                                                                </div>
+                                                        </div>
+                                                </li>
+                                                
+
                                                 
                                         </ul>
                             
@@ -389,3 +428,4 @@ return (
     </div>
 )
 }
+
