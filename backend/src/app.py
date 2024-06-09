@@ -12,6 +12,7 @@ import logging
 # Establezco la instancia y la llamo por medio de una variable.
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb+srv://MatiasGarin:31102023@cluster0.hck92kq.mongodb.net/Universidad'
+#app.config['MONGO_URI] = 'mongodb://localhost:27017/Universidad'
 app.config['JWT_SECRET_KEY'] = 'JSONWebToken_secret_key'
 mongo = PyMongo(app) 
 bcrypt = Bcrypt(app)
@@ -24,7 +25,7 @@ jwt = JWTManager(app)
 db = mongo.db
 
 
-def crear_usuario_automatico(username, nombre, password, rol):
+def crear_usuario_automatico(username, nombre, password, carrera, año, rol):
     #Hashear y saltear la contraseña
     hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
@@ -33,6 +34,8 @@ def crear_usuario_automatico(username, nombre, password, rol):
         'username': username,
         'nombre': nombre,
         'password': hashed_password,
+        'carrera': carrera,
+        'año': año,
         'rol': rol
     })
 
@@ -41,9 +44,10 @@ def crear_usuario_automatico(username, nombre, password, rol):
 def crear_usuarios_automaticamente():
     # Datos de los usuarios a crear
     usuarios = [
-        {'username': 'magarin@alumnos.uai.cl', 'nombre': 'Matías Garín', 'password': 'testpassword1', 'rol': 'alumno'},
-        {'username': 'jacofre@alumnos.uai.cl', 'nombre': 'Javiera Cofré', 'password': 'testpassword2', 'rol': 'profesorUniversidad'},
-        {'username': 'admin@admin.uai.cl', 'nombre': 'Admin', 'password': 'admin123', 'rol': 'adminUniversidad'}
+        {'username': 'magarin@alumnos.uai.cl', 'nombre': 'Matías Garín', 'password': 'testpassword1', 'carrera': 'Ingeniería Civil Informática', 'año': '4to año','rol': 'alumno'},
+        {'username': 'jacofre@alumnos.uai.cl', 'nombre': 'Javiera Cofré', 'password': 'testpassword2', 'carrera': 'Ingeniería Civil Industrial', 'año': '4to año', 'rol': 'alumno'},
+        {'username': 'profesor1@uai.cl', 'nombre': 'Profesor N°1', 'password': 'testpassword3', 'carrera': 'null', 'año': 'null', 'rol': 'profesorUniversidad'},
+        {'username': 'admin@admin.uai.cl', 'nombre': 'Admin', 'password': 'admin123', 'carrera': 'null', 'año': 'null', 'rol': 'adminUniversidad'}
     ]
 
     # Eliminar los usuarios existentes
@@ -53,10 +57,10 @@ def crear_usuarios_automaticamente():
 
     # Crear los usuarios
     for usuario_data in usuarios:
-        crear_usuario_automatico(usuario_data['username'], usuario_data['nombre'], usuario_data['password'], usuario_data['rol'])
+        crear_usuario_automatico(usuario_data['username'], usuario_data['nombre'], usuario_data['password'], usuario_data['carrera'], usuario_data['año'], usuario_data['rol'])
         print(f"Created user with username {usuario_data['username']}")
 
-crear_usuarios_automaticamente()
+#crear_usuarios_automaticamente()
 
 #Acá verificaré la creación automática del usuario
 @app.route('/verificar_usuario_automatico', methods=['GET'])
@@ -96,9 +100,11 @@ def login():
             access_token = create_access_token(identity=str(user['_id']))
             return jsonify({
                 'message': 'Login successful',
+                'username': username,
                 'access_token': access_token,
                 '_id': str(user['_id']),
                 'nombre': user['nombre'],
+                'rol': user['rol'],
             }), 200
         else:
             return jsonify({'message': 'Invalid username or password'}), 401
@@ -134,8 +140,7 @@ def mostrar_usuarios():
 
 
 @app.route('/usuarios', methods=['POST'])
-def createUser():       #esta funcionalidad, sería, dentro de las funcionalidades CRUD (create, read, update, delete), la de Create. Dado que se intenta emular el sistema de registro de la Universidad, 
-                        #no se hace uso de esta funcionalidad, por ende, se deja vacía, y se usa a modo de testeo de la recepción de señal o, dicho en otras palabras, si se escucha el request del API GET.
+def createUser():       
     return 'received'
 
 
@@ -149,7 +154,7 @@ def getUsers():
                 'nombre': doc.get('nombre', ''),
                 'correo': doc.get('correo', ''),
                 'contraseña': doc.get('contraseña', '')
-            })          #éste vendría siendo la funcionalidad R del CRUD, es decir, la de lectura. se utilizaría en función del inicio de sesión, que es requisito para esta entrega. por lo mismo, es la única desarrollada.
+            })         
     return jsonify(users) 
 
 
@@ -176,6 +181,3 @@ def updateUser(id):
 
 if __name__ =="__main__":
     app.run(host='localhost', port=5000, debug=True) #acá se establece dónde se desea ejecutar la aplicación de flask.
-
-    #como se puede apreciar en el directorio, se creó un ambiente virtual para el desarrollo de este backend. el ambiente virtual contiene los paquetes importados en las primeras líneas de código.
-    #están correctamente importados, por algún motivo sale sin color los imports.
