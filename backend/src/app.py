@@ -1,19 +1,20 @@
-from flask import Flask, request, jsonify
-import subprocess
-import json
-from bson import ObjectId, Binary
+from flask import Flask, request, jsonify, redirect, url_for, session
+from requests_oauthlib import OAuth2Session
 from flask_pymongo import PyMongo
 from flask_cors import CORS
-from uuid import UUID
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from bson import ObjectId, Binary
+from bson.json_util import dumps
 import logging
+import os
 
 # Establezco la instancia y la llamo por medio de una variable.
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb+srv://MatiasGarin:31102023@cluster0.hck92kq.mongodb.net/Universidad'
 app.config['JWT_SECRET_KEY'] = 'JSONWebToken_secret_key'
-app.secret_key = os.urandom(24) 
+app.config['SECRET_KEY'] = os.urandom(24)
+#app.secret_key = os.urandom(24) 
 
 
 # Instanciamos y definimos variables
@@ -166,12 +167,10 @@ def get_user_role():
 
 @app.route('/zoom/login')
 def zoom_login():
-    zoom = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scopes)
+    zoom = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
     authorization_url, state = zoom.authorization_url(authorization_base_url)
     session['oauth_state'] = state
     app.logger.debug(f'Saving state: {state}')
-    app.logger.debug('-----------------')
-    app.logger.debug(f'Auth URL: {authorization_url}')
     return redirect(authorization_url)
 
 @app.route('/zoom/callback')
