@@ -12,17 +12,55 @@ import logging
 # Establezco la instancia y la llamo por medio de una variable.
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb+srv://MatiasGarin:31102023@cluster0.hck92kq.mongodb.net/Universidad'
-#app.config['MONGO_URI] = 'mongodb://localhost:27017/Universidad'
 app.config['JWT_SECRET_KEY'] = 'JSONWebToken_secret_key'
+app.secret_key = os.urandom(24) 
+
+
+# Instanciamos y definimos variables
 mongo = PyMongo(app) 
 bcrypt = Bcrypt(app)
 
 #Configuraciones
-CORS(app) 
+CORS(app, supports_credentials=True, origins=["http://localhost:3000"])
 jwt = JWTManager(app)
+# oauth = OAuth(app)
+
+# Configuramos el logger
+logging.basicConfig(level=logging.DEBUG)
+
 
 # Base de Datos
 db = mongo.db
+
+# Configuraciones de Zoom
+
+# Desactivamos la restricción que exige el uso de HTTPS
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+# Configuración de Zoom OAuth
+client_id = '0ieYRQSGGTrKyVxLYTCw'
+client_secret = 'GIdGwgeExXzIt9dBJTNlWLoRtq6gs3Z0'
+authorization_base_url = 'https://zoom.us/oauth/authorize'
+token_url = 'https://zoom.us/oauth/token'
+redirect_uri = 'http://localhost:5000/zoom/callback'
+
+# Scopes requeridos
+scopes = [
+    'user:write:assistant',
+    'user:update:status',
+    'user:delete:scheduler',
+    'user:delete:user',
+    'user:update:settings',
+    'user:delete:token',
+    'user:update:password',
+    'user:update:presence_status',
+    'user:update:user',
+    'user:delete:assistant',
+    'user:update:email',
+    'user:write:virtual_background_files',
+    'user:delete:virtual_background_files',
+    'user:write:profile_picture'
+]
 
 
 def crear_usuario_automatico(username, nombre, password, carrera, año, rol):
@@ -122,6 +160,86 @@ def get_user_role():
         return jsonify({'role': user.get('rol')}), 200
     else:
         return jsonify({'error': 'User not found'}), 404
+
+
+# Funcionalidades API de Zoom:
+
+@app.route('/zoom/login')
+def zoom_login():
+    zoom = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scopes)
+    authorization_url, state = zoom.authorization_url(authorization_base_url)
+    session['oauth_state'] = state
+    app.logger.debug(f'Saving state: {state}')
+    app.logger.debug('-----------------')
+    app.logger.debug(f'Auth URL: {authorization_url}')
+    return redirect(authorization_url)
+
+@app.route('/zoom/callback')
+def zoom_callback():
+    app.logger.debug(f'Saved state: {session.get("oauth_state")}')
+    app.logger.debug(f'Received state: {request.args.get("state")}')
+    zoom = OAuth2Session(client_id, state=session.get('oauth_state'), redirect_uri=redirect_uri)
+    token = zoom.fetch_token(token_url, client_secret=client_secret, authorization_response=request.url)
+    session['oauth_token'] = token
+    app.logger.debug(f'Token: {token}')
+    return redirect(url_for('zoom_success'))
+
+@app.route('/zoom/success')
+def zoom_success():
+    return "Authorization successful. You can now close this window."
+
+@app.route('/zoom/create_meeting', methods=['POST'])
+def create_meeting():
+    token = session.get('oauth_token')
+    app.logger.debug(f'Token: {token}')
+    if not token:
+        return jsonify({'error': 'Not authenticated'}), 401
+
+    zoom = OAuth2Session(client_id, token=token)
+    user_info_response = zoom.get('https://api.zoom.us/v2/users/me')
+
+    app.logger.debug(f'Zoom user info response status: {user_info_response.status_code}')
+    app.logger.debug(f'Zoom user info response headers: {user_info_response.headers}')
+    app.logger.debug(f'Zoom user info response text: {user_info_response.text}')
+    
+    if user_info_response.status_code != 200:
+        return jsonify({'error': 'Error fetching user info from Zoom', 'details': user_info_response.text}), user_info_response.status_code
+    
+    user_info = user_info_response.json()
+
+    if 'id' not in user_info:
+        app.logger.error(f'User info does not contain id: {user_info}')
+        return jsonify({'error': 'User info from Zoom does not contain id'}), 400
+
+    meeting_details = {
+        "topic": request.json.get('topic'),
+        "type": 2,  # Scheduled meeting
+        "start_time": request.json.get('start_time'),  # Example: "2020-03-31T12:00:00Z"
+        "duration": request.json.get('duration'),  # Meeting duration in minutes
+        "timezone": "UTC",
+        "agenda": request.json.get('agenda'),
+        "settings": {
+            "host_video": True,
+            "participant_video": True,
+            "join_before_host": False,
+            "mute_upon_entry": True,
+            "watermark": False,
+            "use_pmi": False,
+            "approval_type": 1,
+            "audio": "both",
+            "auto_recording": "none",
+            "enforce_login": False
+        }
+    }
+
+    response = zoom.post(f'https://api.zoom.us/v2/users/{user_info["id"]}/meetings', json=meeting_details)
+    app.logger.debug(f'Zoom API response: {response.status_code} - {response.text}')
+    
+    if response.status_code != 201:
+        app.logger.error(f'Error creating meeting: {response.text}')
+        return jsonify({'error': 'Error al crear la reunión'}), response.status_code
+
+    return jsonify(response.json())
 
 
 @app.route('/mostrar_usuarios', methods=['GET'])
