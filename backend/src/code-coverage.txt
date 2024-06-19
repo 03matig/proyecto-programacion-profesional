@@ -1,0 +1,9 @@
+---------- coverage: platform win32, python 3.11.9-final-0 -----------
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+app.py                         182    104    43%
+config.py                        5      5     0%
+operaciones.py                  12     12     0%
+test_inscribir_profesor.py      45     15    67%
+------------------------------------------------
+TOTAL                          244    136    44%
