@@ -123,7 +123,90 @@ def get_user_role():
     else:
         return jsonify({'error': 'User not found'}), 404
 
+# Consultas API para la funcionalidad de Crear Comisiones:
+@app.route('/alumnos', methods=['GET'])
+def get_alumnos():
+    alumnos = db.Comisiones.find({"rol": "alumno"})
+    alumnos_list = []
+    for alumno in alumnos:
+        alumnos_list.append({
+            "username": alumno["username"],
+            "nombre": alumno["nombre"],
+            "carrera": alumno["carrera"],
+            "rol": alumno["rol"],
+            "profesores": alumno.get("profesores-a-cargo", {
+                "Profesor N°1": {"id": "", "Nombre": "", "Carrera": ""},
+                "Profesor N°2": {"id": "", "Nombre": "", "Carrera": ""},
+                "Profesor N°3": {"id": "", "Nombre": "", "Carrera": ""}
+            })
+        })
+    return jsonify(alumnos_list), 200
 
+@app.route('/inscribir_profesor', methods=['POST'])
+def inscribir_profesor():
+    data = request.get_json()
+    alumno_username = data['alumno_username']
+    profesor_id = data['profesor_id']
+    profesor_nombre = data['profesor_nombre']
+    profesor_carrera = data['profesor_carrera']
+
+    # Buscar la comisión del alumno
+    comision = db.Comisiones.find_one({'username': alumno_username})
+
+    if not comision:
+        return jsonify({'error': 'Comisión no encontrada'}), 404
+
+    # Contar el número de profesores ya inscritos
+    profesores_inscritos = len([prof for prof in comision['profesores-a-cargo'].values() if prof['Nombre']])
+    
+    if profesores_inscritos >= 3:
+        return jsonify({'error': 'La comisión ya tiene 3 profesores inscritos'}), 400
+
+    # Verificar si el profesor ya está inscrito
+    for prof in comision['profesores-a-cargo'].values():
+        if prof['id'] == profesor_id:
+            return jsonify({'error': 'El profesor ya está inscrito en esta comisión'}), 400
+
+    # Verificar si ya hay un profesor con la misma carrera
+    carreras_profesores = [prof['Carrera'] for prof in comision['profesores-a-cargo'].values() if prof['Nombre']]
+    if profesor_carrera not in carreras_profesores and len(carreras_profesores) < 2:
+        # Inscribir al profesor en el siguiente puesto disponible
+        for key, prof in comision['profesores-a-cargo'].items():
+            if not prof['Nombre']:
+                comision['profesores-a-cargo'][key] = {
+                    'id': profesor_id,
+                    'Nombre': profesor_nombre,
+                    'Carrera': profesor_carrera
+                }
+                break
+    else:
+        if profesor_carrera in carreras_profesores and profesores_inscritos < 3:
+            for key, prof in comision['profesores-a-cargo'].items():
+                if not prof['Nombre']:
+                    comision['profesores-a-cargo'][key] = {
+                        'id': profesor_id,
+                        'Nombre': profesor_nombre,
+                        'Carrera': profesor_carrera
+                    }
+                    break
+        elif profesores_inscritos == 2 and profesor_carrera not in carreras_profesores:
+            for key, prof in comision['profesores-a-cargo'].items():
+                if not prof['Nombre']:
+                    comision['profesores-a-cargo'][key] = {
+                        'id': profesor_id,
+                        'Nombre': profesor_nombre,
+                        'Carrera': profesor_carrera,
+                        'President': 'yes'
+                    }
+                    break
+
+    db.Comisiones.update_one(
+        {'username': alumno_username},
+        {'$set': {'profesores-a-cargo': comision['profesores-a-cargo']}}
+    )
+
+    return jsonify({'message': 'Profesor inscrito con éxito'}), 200
+    
 @app.route('/mostrar_usuarios', methods=['GET'])
 def mostrar_usuarios():
     try:
