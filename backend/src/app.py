@@ -13,9 +13,8 @@ import os
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb+srv://MatiasGarin:31102023@cluster0.hck92kq.mongodb.net/Universidad'
 app.config['JWT_SECRET_KEY'] = 'JSONWebToken_secret_key'
-app.config['SECRET_KEY'] = os.urandom(24)
-#app.secret_key = os.urandom(24) 
-
+#app.config['SECRET_KEY'] = os.urandom(24)
+app.secret_key = os.urandom(24)
 
 # Instanciamos y definimos variables
 mongo = PyMongo(app) 
@@ -28,7 +27,6 @@ jwt = JWTManager(app)
 
 # Configuramos el logger
 logging.basicConfig(level=logging.DEBUG)
-
 
 # Base de Datos
 db = mongo.db
@@ -163,11 +161,10 @@ def get_user_role():
         return jsonify({'error': 'User not found'}), 404
 
 
-# Funcionalidades API de Zoom:
-
+# Consultas API para la funcionalidad de Crear Links de Zoom:
 @app.route('/zoom/login')
 def zoom_login():
-    zoom = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scope)
+    zoom = OAuth2Session(client_id, redirect_uri=redirect_uri, scope=scopes)
     authorization_url, state = zoom.authorization_url(authorization_base_url)
     session['oauth_state'] = state
     app.logger.debug(f'Saving state: {state}')
@@ -239,7 +236,6 @@ def create_meeting():
         return jsonify({'error': 'Error al crear la reunión'}), response.status_code
 
     return jsonify(response.json())
-
 
 @app.route('/mostrar_usuarios', methods=['GET'])
 def mostrar_usuarios():
