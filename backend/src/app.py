@@ -16,7 +16,7 @@ import io
 app = Flask(__name__)
 app.config['MONGO_URI'] = 'mongodb+srv://MatiasGarin:31102023@cluster0.hck92kq.mongodb.net/Universidad'
 app.config['JWT_SECRET_KEY'] = 'JSONWebToken_secret_key'
-#app.config['SECRET_KEY'] = os.urandom(24)
+app.config['SECRET_KEY'] = os.urandom(24)
 app.secret_key = os.urandom(24)
 
 # Instanciamos y definimos variables
@@ -24,7 +24,7 @@ mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
 
 #Configuraciones
-CORS(app, supports_credentials=True, origins=["http://localhost:3000"])
+CORS(app, supports_credentials=True)
 jwt = JWTManager(app)
 # oauth = OAuth(app)
 
@@ -33,6 +33,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Base de Datos
 db = mongo.db
+fs = gridfs.GridFS(db)
 
 # Configuraciones de Zoom
 
@@ -381,6 +382,7 @@ def download_pdf():
     except Exception as e:
         print(f"Error al descargar el archivo: {e}")
         return jsonify({"message": "Error al descargar el archivo", "error": str(e)}), 500
+   
     
 @app.route('/mostrar_usuarios', methods=['GET'])
 def mostrar_usuarios():
