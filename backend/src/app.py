@@ -66,7 +66,7 @@ scopes = [
 ]
 
 
-def crear_usuario_automatico(username, nombre, password, carrera, año, rol):
+def create_user_auto(username, nombre, password, carrera, año, rol):
     #Hashear y saltear la contraseña
     hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
@@ -82,7 +82,7 @@ def crear_usuario_automatico(username, nombre, password, carrera, año, rol):
 
 
 # Crear usuario automáticamente al iniciar la aplicación Flask
-def crear_usuarios_automaticamente():
+def create_users_auto():
     # Datos de los usuarios a crear
     usuarios = [
         {'username': 'magarin@alumnos.uai.cl', 'nombre': 'Matías Garín', 'password': 'testpassword1', 'carrera': 'Ingeniería Civil Informática', 'año': '4to año','rol': 'alumno'},
@@ -98,14 +98,14 @@ def crear_usuarios_automaticamente():
 
     # Crear los usuarios
     for usuario_data in usuarios:
-        crear_usuario_automatico(usuario_data['username'], usuario_data['nombre'], usuario_data['password'], usuario_data['carrera'], usuario_data['año'], usuario_data['rol'])
+        create_user_auto(usuario_data['username'], usuario_data['nombre'], usuario_data['password'], usuario_data['carrera'], usuario_data['año'], usuario_data['rol'])
         print(f"Created user with username {usuario_data['username']}")
 
-#crear_usuarios_automaticamente()
+#create_users_auto()
 
 #Acá verificaré la creación automática del usuario
-@app.route('/verificar_usuario_automatico', methods=['GET'])
-def verificar_creacion_automatica():
+@app.route('/verify_auto_creation', methods=['GET'])
+def verify_auto_creation():
     # Obtener el usuario creado automáticamente
     usuario = db.users.find_one({'username': 'magarin@alumnos.uai.cl'})
 
@@ -115,7 +115,7 @@ def verificar_creacion_automatica():
     else:
         return jsonify({'message': 'No se encontró el usuario creado automáticamente'})
 
-
+# Consultas API para la funcionalidad del Inicio de Sesión con Hash + Salt y Sanitización
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -145,6 +145,7 @@ def login():
                 'access_token': access_token,
                 '_id': str(user['_id']),
                 'nombre': user['nombre'],
+                'carrera': user['carrera'],
                 'rol': user['rol'],
             }), 200
         else:
@@ -163,7 +164,7 @@ def get_user_role():
         return jsonify({'role': user.get('rol')}), 200
     else:
         return jsonify({'error': 'User not found'}), 404
-      
+
 # Consultas API para la funcionalidad de Crear Links de Zoom:
 @app.route('/zoom/login')
 def zoom_login():
@@ -239,6 +240,53 @@ def create_meeting():
         return jsonify({'error': 'Error al crear la reunión'}), response.status_code
 
     return jsonify(response.json())
+
+@app.route('/pasantias_pendientes', methods=['GET'])
+def pasantias_pendientes():
+    comisiones = db.Comisiones.find({})
+    usuarios = [{"id": str(comision["_id"]), "nombre": comision["nombre"]} for comision in comisiones]
+    return jsonify(usuarios), 200
+
+@app.route('/post_zoom_link', methods=['POST'])
+def post_zoom_link():
+    data = request.get_json()
+    nombre_alumno = data.get('nombre_alumno')
+    zoom_link = data.get('zoom_link')
+
+    if not nombre_alumno or not zoom_link:
+        return jsonify({'error': 'Nombre del alumno y link de Zoom son requeridos'}), 400
+
+    result = db.Comisiones.update_one(
+        {'nombre': nombre_alumno},
+        {'$set': {'internship-defense.internship-defense-zoom': zoom_link}}
+    )
+
+    if result.modified_count == 0:
+        return jsonify({'error': 'No se encontró al alumno o no se pudo actualizar'}), 404
+
+    return jsonify({'message': 'Link de Zoom actualizado correctamente'}), 200
+
+# Notificaciones respecto de la API de Zoom:
+
+@app.route('/get_notifications', methods=['GET'])
+def get_notifications():
+    user_id = request.args.get('user_id')
+    
+    if not user_id:
+        return jsonify({'error': 'User ID is required'}), 400
+    
+    user = db.Comisiones.find_one({'id': user_id})
+    
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    
+    notifications = []
+    
+    if user.get('internship-defense', {}).get('internship-defense-zoom'):
+        notifications.append(f"Se le asignó una reunión para su defensa de pasantía: {user['internship-defense']['internship-defense-zoom']}")
+    
+    return jsonify({'notifications': notifications}), 200
+
 
 # Consultas API para la funcionalidad de Crear Comisiones
 @app.route('/alumnos', methods=['GET'])
@@ -383,7 +431,8 @@ def download_pdf():
         print(f"Error al descargar el archivo: {e}")
         return jsonify({"message": "Error al descargar el archivo", "error": str(e)}), 500
    
-    
+
+# Pruebas iniciales
 @app.route('/mostrar_usuarios', methods=['GET'])
 def mostrar_usuarios():
     try:
@@ -396,7 +445,7 @@ def mostrar_usuarios():
         return jsonify(resultado)
     
     except Exception as e:
-        return f'Error al ejecutar el comando: {e}'  #mongodb usersinfo <username>
+        return f'Error al ejecutar el comando: {e}'  
 
 
 @app.route('/usuarios', methods=['POST'])
@@ -407,7 +456,7 @@ def createUser():
 @app.route('/users', methods=['GET'])
 def getUsers():
     users = []
-    for doc in db.users.find(): #db.find() => db.Login.find();
+    for doc in db.users.find():
         #if 'userId' in doc:
             users.append({
                 '_id': str(ObjectId(doc['_id'])),
@@ -439,5 +488,7 @@ def updateUser(id):
     return jsonify({'msg': 'User Updated'})
 
 
+# Establecemos dónde queremos desplegar la aplicación Flask.
 if __name__ =="__main__":
-    app.run(host='localhost', port=5000, debug=True) #acá se establece dónde se desea ejecutar la aplicación de flask.
+    app.run(host='localhost', port=5000, debug=True) 
+
