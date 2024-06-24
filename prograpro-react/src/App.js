@@ -9,6 +9,7 @@ import { Dashboard } from './components/Dashboard';
 import { Pasantia } from './components/Pasantia';
 import { VistaCrearZoom } from './components/VistaCrearZoom';
 import { Navbar } from './components/Navbar';
+import { Participantes } from './components/Participantes';
 
 function App() {
   const [user, setUser] = useState([]);
@@ -25,6 +26,7 @@ function App() {
               <Routes>
                 <Route path="/Home" element={<Home user={user} setUser={setUser} />} />
                 <Route path="/Course" element={<Course user={user} setUser={setUser} />} />
+                <Route path="/Participantes" element={<Participantes user={user} setUser={setUser} />} />
                 <Route path="/Pasantia" element={<Pasantia user={user} setUser={setUser} />} />
                 <Route path="/VistaCrearZoom" element={<VistaCrearZoom user={user} setUser={setUser} />} />
               </Routes>
