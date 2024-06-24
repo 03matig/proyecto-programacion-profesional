@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, redirect, url_for, session
+from flask import Flask, request, jsonify, redirect, url_for, session, send_file
 from requests_oauthlib import OAuth2Session
 from flask_pymongo import PyMongo
 from flask_cors import CORS
@@ -8,6 +8,9 @@ from bson import ObjectId, Binary
 from bson.json_util import dumps
 import logging
 import os
+import random
+import gridfs
+import io
 
 # Establezco la instancia y la llamo por medio de una variable.
 app = Flask(__name__)
@@ -236,7 +239,7 @@ def create_meeting():
 
     return jsonify(response.json())
 
-# Consultas API para la funcionalidad de Crear Comisiones:
+# Consultas API para la funcionalidad de Crear Comisiones
 @app.route('/alumnos', methods=['GET'])
 def get_alumnos():
     alumnos = db.Comisiones.find({"rol": "alumno"})
@@ -251,6 +254,12 @@ def get_alumnos():
                 "Profesor N°1": {"id": "", "Nombre": "", "Carrera": ""},
                 "Profesor N°2": {"id": "", "Nombre": "", "Carrera": ""},
                 "Profesor N°3": {"id": "", "Nombre": "", "Carrera": ""}
+            }),
+            "internship-defense": alumno.get("internship-defense", {
+                "upload-report-deadline": "", 
+                "internship-report-pdf": "", 
+                "internship-defense-date": "",
+                "internship-defense-zoom": ""
             })
         })
     return jsonify(alumnos_list), 200
@@ -263,63 +272,115 @@ def inscribir_profesor():
     profesor_nombre = data['profesor_nombre']
     profesor_carrera = data['profesor_carrera']
 
-    # Buscar la comisión del alumno
     comision = db.Comisiones.find_one({'username': alumno_username})
 
     if not comision:
         return jsonify({'error': 'Comisión no encontrada'}), 404
 
+    # Limpiar las entradas vacías de profesores
+    comision['profesores-a-cargo'] = {k: v for k, v in comision['profesores-a-cargo'].items() if v['id']}
 
-    # Contar el número de profesores ya inscritos
-    profesores_inscritos = len([prof for prof in comision['profesores-a-cargo'].values() if prof['Nombre']])
-    
+    profesores_inscritos = len(comision['profesores-a-cargo'])
+
     if profesores_inscritos >= 3:
         return jsonify({'error': 'La comisión ya tiene 3 profesores inscritos'}), 400
 
-    # Verificar si el profesor ya está inscrito
     for prof in comision['profesores-a-cargo'].values():
         if prof['id'] == profesor_id:
             return jsonify({'error': 'El profesor ya está inscrito en esta comisión'}), 400
 
-    # Verificar si ya hay un profesor con la misma carrera
-    carreras_profesores = [prof['Carrera'] for prof in comision['profesores-a-cargo'].values() if prof['Nombre']]
-    if profesor_carrera not in carreras_profesores and len(carreras_profesores) < 2:
-        # Inscribir al profesor en el siguiente puesto disponible
-        for key, prof in comision['profesores-a-cargo'].items():
-            if not prof['Nombre']:
-                comision['profesores-a-cargo'][key] = {
-                    'id': profesor_id,
-                    'Nombre': profesor_nombre,
-                    'Carrera': profesor_carrera
-                }
-                break
-    else:
-        if profesor_carrera in carreras_profesores and profesores_inscritos < 3:
-            for key, prof in comision['profesores-a-cargo'].items():
-                if not prof['Nombre']:
-                    comision['profesores-a-cargo'][key] = {
-                        'id': profesor_id,
-                        'Nombre': profesor_nombre,
-                        'Carrera': profesor_carrera
-                    }
-                    break
-        elif profesores_inscritos == 2 and profesor_carrera not in carreras_profesores:
-            for key, prof in comision['profesores-a-cargo'].items():
-                if not prof['Nombre']:
-                    comision['profesores-a-cargo'][key] = {
-                        'id': profesor_id,
-                        'Nombre': profesor_nombre,
-                        'Carrera': profesor_carrera,
-                        'President': 'yes'
-                    }
-                    break
+    # Verificar si el profesor debe ser presidente
+    presidente = 'no'
+    if profesor_carrera == comision['carrera']:
+        if not any(prof.get('President') == 'yes' for prof in comision['profesores-a-cargo'].values()):
+            presidente = 'yes'
+
+    comision['profesores-a-cargo'][f'Profesor N°{profesores_inscritos + 1}'] = {
+        'id': profesor_id,
+        'Nombre': profesor_nombre,
+        'Carrera': profesor_carrera,
+        'President': presidente
+    }
 
     db.Comisiones.update_one(
         {'username': alumno_username},
         {'$set': {'profesores-a-cargo': comision['profesores-a-cargo']}}
     )
 
-    return jsonify({'message': 'Profesor inscrito con éxito'}), 200
+    return jsonify({'message': 'Profesor inscrito con éxito', 'presidente': presidente == 'yes'}), 200
+
+# Consultas API para la funcionalidad de Subir, borrar y descargar archivos PDF.
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    user_id = request.form['userId']
+    file = request.files['internship-report-pdf']
+    
+    if file:
+        # Guardar el archivo en MongoDB usando GridFS
+        file_id = fs.put(file, filename=file.filename, user_id=user_id)
+        
+        # Actualizar la base de datos con el ID del archivo
+        db.Comisiones.update_one(
+            {'id': user_id},
+            {'$set': {'internship-defense.internship-report-pdf': str(file_id)}}
+        )
+        
+        user_document = db.Comisiones.find_one({'id': user_id})
+        if user_document:
+            print(f"Document: {user_document['internship-defense']}")
+
+        return jsonify({"message": "Archivo subido exitosamente"}), 200
+    else:
+        return jsonify({"message": "No se encontró el archivo"}), 400
+
+@app.route('/delete', methods=['DELETE'])
+def delete_file():
+    user_id = request.args.get('userId')
+    
+    # Buscar el documento del usuario
+    user_document = db.Comisiones.find_one({'id': user_id})
+    
+    if user_document and 'internship-defense' in user_document:
+        file_id = user_document['internship-defense'].get('internship-report-pdf')
+        
+        if file_id:
+            # Eliminar el archivo de GridFS
+            fs.delete(ObjectId(file_id))
+            
+            # Actualizar el documento del usuario
+            db.Comisiones.update_one(
+                {'id': user_id},
+                {'$unset': {'internship-defense.internship-report-pdf': ""}}
+            )
+            
+            return jsonify({"message": "Archivo borrado exitosamente"}), 200
+        else:
+            return jsonify({"message": "No se encontró el archivo para borrar"}), 404
+    else:
+        return jsonify({"message": "No se encontró el documento del usuario"}), 404
+    
+@app.route('/download_pdf', methods=['GET'])
+def download_pdf():
+    file_id = request.args.get('fileId')
+    if not file_id:
+        print("No se proporcionó fileId")
+        return jsonify({"message": "fileId es requerido"}), 400
+
+    try:
+        print(f"Buscando archivo con _id: {file_id}")
+        file = fs.get(ObjectId(file_id))
+        print(f"Archivo encontrado: {file.filename}")
+        return send_file(
+            io.BytesIO(file.read()),
+            download_name=file.filename,  # Usar el nombre original del archivo
+            as_attachment=True
+        )
+    except gridfs.errors.NoFile:
+        print(f"No se encontró el archivo con _id: {file_id}")
+        return jsonify({"message": "No se encontró el archivo"}), 404
+    except Exception as e:
+        print(f"Error al descargar el archivo: {e}")
+        return jsonify({"message": "Error al descargar el archivo", "error": str(e)}), 500
     
 @app.route('/mostrar_usuarios', methods=['GET'])
 def mostrar_usuarios():
