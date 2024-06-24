@@ -18,7 +18,7 @@ export const Participantes = () => {
     const fetchAlumnos = async () => {
         console.log("Enviando request al backend");
         try {
-            const response = await fetch('http://localhost:5000/alumnos', {
+            const response = await fetch('http://40.76.107.0:5000/alumnos', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -58,7 +58,7 @@ export const Participantes = () => {
 
     const inscribirProfesor = async (alumnoUsername) => {
         try {
-            const response = await fetch('http://localhost:5000/inscribir_profesor', {
+            const response = await fetch('http://40.76.107.0:5000/inscribir_profesor', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -92,7 +92,7 @@ export const Participantes = () => {
     const descargarInforme = async (fileId) => {
         try {
             console.debug("Enviando solicitud para descargar el archivo con fileId:", fileId);
-            const response = await fetch(`http://localhost:5000/download_pdf?fileId=${fileId}`, {
+            const response = await fetch(`http://40.76.107.0:5000/download_pdf?fileId=${fileId}`, {
                 method: 'GET'
             });
 
